@@ -6,7 +6,7 @@ export default function useReadAlertContext() {
   const contextValue = useContext(ReadAlertContext);
 
   if (!contextValue) {
-    throw new Error('useReadAlertContext() can only used under <ReadAlertComposer>.');
+    throw new Error('useReadAlertContext() can only used under <ReadAlertProvider>.');
   }
 
   return contextValue;

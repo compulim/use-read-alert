@@ -1,4 +1,4 @@
-import ReadAlertComposer from './ReadAlertComposer';
+import ReadAlertProvider from './ReadAlertProvider';
 import useReadAlert from './useReadAlert';
 
-export { ReadAlertComposer, useReadAlert };
+export { ReadAlertProvider, useReadAlert };

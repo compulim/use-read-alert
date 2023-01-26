@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { ReadAlertComposer } from 'use-read-alert';
+import { ReadAlertProvider } from 'use-read-alert';
 import React from 'react';
 
 import App from './App';
 
 createRoot(document.getElementById('root')).render(
-  <ReadAlertComposer>
+  <ReadAlertProvider>
     <App />
-  </ReadAlertComposer>
+  </ReadAlertProvider>
 );

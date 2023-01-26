@@ -6,15 +6,17 @@ A callback hook to read assertive alert by the screen reader.
 
 ## How to use
 
+Installs the provider component. The provider component is required to use the `useReadAlert` hook.
+
 ```tsx
 React.createRoot(document.getElementById('root')).render(
-  <ReadAlertComposer>
+  <ReadAlertProvider>
     <App />
-  </ReadAlertComposer>
+  </ReadAlertProvider>
 );
 ```
 
-Then, in your component, call the callback function to read the alert message.
+Then, in your component, calls the callback function to read the alert message.
 
 ```tsx
 const readAlert = useReadAlert();
@@ -25,7 +27,7 @@ readAlert('Hello, World!');
 ## API
 
 ```ts
-function ReadAlertComposer(PropsWithChildren<{
+function ReadAlertProvider(PropsWithChildren<{
    alertClassName?: string;
 }>);
 

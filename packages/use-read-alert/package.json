@@ -10,9 +10,9 @@
       "import": "./lib/esmodules/index.js",
       "require": "./lib/commonjs/index.js"
     },
-    "./ReadAlertComposer": {
-      "import": "./lib/esmodules/ReadAlertComposer.js",
-      "require": "./lib/commonjs/ReadAlertComposer.js"
+    "./ReadAlertProvider": {
+      "import": "./lib/esmodules/ReadAlertProvider.js",
+      "require": "./lib/commonjs/ReadAlertProvider.js"
     },
     "./useReadAlert": {
       "import": "./lib/esmodules/useReadAlert.js",

@@ -19,7 +19,7 @@ type Props = PropsWithChildren<{
   alertClassName?: string;
 }>;
 
-const ReadAlertComposer = ({ alertClassName, children }: Props) => {
+const ReadAlertProvider = ({ alertClassName, children }: Props) => {
   const [messageObject, setMessageObject] = useState<{ message: string; shouldClear: boolean }>({
     message: '',
     shouldClear: false
@@ -54,4 +54,4 @@ const ReadAlertComposer = ({ alertClassName, children }: Props) => {
   );
 };
 
-export default ReadAlertComposer;
+export default ReadAlertProvider;
