@@ -46,8 +46,6 @@ jobs:
           cd ../pages
           npm install
           npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         if: ${{ matrix.node-version == '16.x' }}
