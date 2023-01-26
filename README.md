@@ -16,12 +16,16 @@ React.createRoot(document.getElementById('root')).render(
 );
 ```
 
-Then, in your component, calls the callback function to read the alert message.
+Then, in your React component, calls the callback function to read the alert message.
 
 ```tsx
-const readAlert = useReadAlert();
+const MyComponent = () => {
+  const readAlert = useReadAlert();
 
-readAlert('Hello, World!');
+  readAlert('Hello, World!');
+
+  // ...
+};
 ```
 
 ## API
