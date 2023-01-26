@@ -39,8 +39,18 @@ jobs:
         with:
           name: tarball
           path: packages/use-read-alert/*.tgz
+      - name: Build Pages
+        run: |
+          cd packages/pages
+          npm install
+          npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        if: ${{ matrix.node-version == '16.x' }}
+        with:
+          path: 'packages/pages/public/'
 
-  publish:
+  publish-package:
     needs: build
     runs-on: ubuntu-latest
     environment: prerelease
@@ -67,3 +77,21 @@ jobs:
       - run: npm publish --tag main `ls *.tgz`
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploy-pages:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
