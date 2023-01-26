@@ -41,7 +41,9 @@ jobs:
           path: packages/use-read-alert/*.tgz
       - name: Build Pages
         run: |
-          cd packages/pages
+          cd packages/use-read-alert
+          mv *.tgz use-read-alert-0.0.0-0.tgz
+          cd ../pages
           npm install
           npm run build
       - name: Upload Pages artifact
