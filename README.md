@@ -9,12 +9,12 @@ A callback hook to read assertive alert by the screen reader.
 Installs the provider component. The provider component is required to use the `useReadAlert` hook.
 
 ```tsx
-import { ReadAlertProvider } from 'use-read-alert';
+import { UseReadAlertProvider } from 'use-read-alert';
 
 React.createRoot(document.getElementById('root')).render(
-  <ReadAlertProvider>
+  <UseReadAlertProvider>
     <App />
-  </ReadAlertProvider>
+  </UseReadAlertProvider>
 );
 ```
 
@@ -35,7 +35,7 @@ const MyComponent = () => {
 ## API
 
 ```ts
-function ReadAlertProvider(PropsWithChildren<{
+function UseReadAlertProvider(PropsWithChildren<{
    alertClassName?: string;
 }>);
 
