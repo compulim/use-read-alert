@@ -1,7 +1,5 @@
-import useReadAlertContext from './private/useReadAlertContext';
+import useContext from './private/useContext';
 
 export default function useReadAlert() {
-  const { readAlert } = useReadAlertContext();
-
-  return readAlert;
+  return useContext().readAlert;
 }

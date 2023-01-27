@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import ReadAlertContext from './private/ReadAlertContext';
+
+import Context from './private/Context';
 
 import type { CSSProperties, PropsWithChildren } from 'react';
 
@@ -19,7 +20,7 @@ type Props = PropsWithChildren<{
   alertClassName?: string;
 }>;
 
-const ReadAlertProvider = memo(({ alertClassName, children }: Props) => {
+const UseReadAlertProvider = memo(({ alertClassName, children }: Props) => {
   const [messageObject, setMessageObject] = useState<{ message: string; shouldClear: boolean }>({
     message: '',
     shouldClear: false
@@ -45,13 +46,15 @@ const ReadAlertProvider = memo(({ alertClassName, children }: Props) => {
   }, [messageObject]);
 
   return (
-    <ReadAlertContext.Provider value={contextValue}>
+    <Context.Provider value={contextValue}>
       {children}
       <span className={alertClassName} role="alert" style={typeof alertClassName === 'undefined' ? STYLE : undefined}>
         {(!messageObject.shouldClear && messageObject.message) || ''}
       </span>
-    </ReadAlertContext.Provider>
+    </Context.Provider>
   );
 });
 
-export default ReadAlertProvider;
+UseReadAlertProvider.displayName = 'UseReadAlertProvider';
+
+export default UseReadAlertProvider;

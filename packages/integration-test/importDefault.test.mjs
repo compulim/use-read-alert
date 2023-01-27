@@ -5,7 +5,7 @@ import { cleanup, fireEvent, render, waitForElementToBeRemoved } from '@testing-
 import { screen } from '@testing-library/dom';
 import React, { useCallback } from 'react';
 
-import { ReadAlertProvider, useReadAlert } from 'use-read-alert';
+import { useReadAlert, UseReadAlertProvider } from 'use-read-alert';
 
 const App = () => {
   const readAlert = useReadAlert();
@@ -24,11 +24,11 @@ const App = () => {
 afterEach(cleanup);
 
 test('simple scenario', async () => {
-  // GIVEN: A test application with <ReadAlertProvider>.
+  // GIVEN: A test application with <UseReadAlertProvider>.
   const result = render(
-    <ReadAlertProvider>
+    <UseReadAlertProvider>
       <App />
-    </ReadAlertProvider>
+    </UseReadAlertProvider>
   );
 
   // THEN: It should have role="alert" setup.

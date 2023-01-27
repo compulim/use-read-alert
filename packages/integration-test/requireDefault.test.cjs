@@ -5,7 +5,7 @@ const { cleanup, fireEvent, render, waitForElementToBeRemoved } = require('@test
 const { screen } = require('@testing-library/dom');
 const React = require('react');
 
-const { ReadAlertProvider, useReadAlert } = require('use-read-alert');
+const { useReadAlert, UseReadAlertProvider } = require('use-read-alert');
 
 const { useCallback } = React;
 
@@ -26,11 +26,11 @@ const App = () => {
 afterEach(cleanup);
 
 test('simple scenario', async () => {
-  // GIVEN: A test application with <ReadAlertProvider>.
+  // GIVEN: A test application with <UseReadAlertProvider>.
   const result = render(
-    <ReadAlertProvider>
+    <UseReadAlertProvider>
       <App />
-    </ReadAlertProvider>
+    </UseReadAlertProvider>
   );
 
   // THEN: It should have role="alert" setup.

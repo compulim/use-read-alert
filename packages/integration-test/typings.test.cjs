@@ -2,7 +2,7 @@ const { createProgram, flattenDiagnosticMessageText, getPreEmitDiagnostics } = r
 
 test('typings should work', () => {
   // GIVEN: TypeScript compiler to compile ./typings/simple.ts.
-  const program = createProgram(['./typings/simple.ts'], { noEmit: true, strict: true });
+  const program = createProgram(['./typings/simple.ts'], { esModuleInterop: true, noEmit: true, strict: true });
 
   // WHEN: Compile.
   const { diagnostics } = program.emit();
@@ -16,7 +16,7 @@ test('typings should work', () => {
 
 test('setter should fail', () => {
   // GIVEN: TypeScript compiler to compile ./typings/messageMustBeAString.fail.ts.
-  const program = createProgram(['./typings/messageMustBeAString.fail.ts'], { noEmit: true, strict: true });
+  const program = createProgram(['./typings/messageMustBeAString.fail.ts'], { esModuleInterop: true, noEmit: true, strict: true });
 
   // WHEN: Compile.
   const { diagnostics } = program.emit();
