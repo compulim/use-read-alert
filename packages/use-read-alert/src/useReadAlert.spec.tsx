@@ -26,7 +26,7 @@ afterEach(cleanup);
 
 test('simple scenario', async () => {
   // GIVEN: A test application with <UseReadAlertProvider>.
-  const result = render(
+  render(
     <UseReadAlertProvider>
       <App />
     </UseReadAlertProvider>

@@ -55,4 +55,6 @@ const UseReadAlertProvider = memo(({ alertClassName, children }: Props) => {
   );
 });
 
+UseReadAlertProvider.displayName = 'UseReadAlertProvider';
+
 export default UseReadAlertProvider;
