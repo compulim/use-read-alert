@@ -86,7 +86,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Summarize job
-        run: NPM package published to https://npmjs.com/package/${{ steps.read-package-json.outputs.package-name }}/v/${{ steps.read-package-json.outputs.version }}. >> $GITHUB_STEP_SUMMARY
+        run: echo NPM package published to https://npmjs.com/package/${{ steps.read-package-json.outputs.package-name }}/v/${{ steps.read-package-json.outputs.version }}. >> $GITHUB_STEP_SUMMARY
 
   publish-release:
     needs:
@@ -101,4 +101,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Summarize job
-        run: GitHub release created at https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}. >> $GITHUB_STEP_SUMMARY
+        run: echo GitHub release created at https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}. >> $GITHUB_STEP_SUMMARY
