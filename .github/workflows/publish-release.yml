@@ -27,6 +27,11 @@ jobs:
         run: |
           cd packages/use-read-alert
           npm pack
+      - name: Upload changelog artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: changelog
+          path: CHANGELOG.md
       - name: Upload tarball artifact
         uses: actions/upload-artifact@v3.1.1
         with:
@@ -40,6 +45,10 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+      - name: Download changelog artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: changelog
       - name: Download tarball artifact
         uses: actions/download-artifact@v3.0.1
         with:
