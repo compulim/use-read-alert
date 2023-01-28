@@ -130,4 +130,4 @@ jobs:
           git add --all
           git commit --message "Bump to `cat package.json | jq -r .version`"
           git push -u origin bump-`cat package.json | jq -r .version`
-          gh pr create --assignee ${{ github.actor }} --base main --fill --title "Bump to `cat package.json | jq -r .version`"
+          gh pr create --assignee ${{ github.actor }} --base main --body "" --title "Bump to `cat package.json | jq -r .version`"
