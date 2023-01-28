@@ -125,7 +125,8 @@ jobs:
         run: |
           npm version prepatch --no-git-tag-version
           echo version=`cat package.json | jq -r .version` >> $GITHUB_OUTPUT
-      - env:
+      - continue-on-error: true
+        env:
           GH_TOKEN: ${{ github.token }}
         id: create-pull-request
         name: Create pull request
