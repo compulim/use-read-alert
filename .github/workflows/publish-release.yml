@@ -141,5 +141,5 @@ jobs:
           if [ "${{ steps.create-pull-request.outputs.url }}" = "" ]; then
             echo Pull request created at ${{ steps.create-pull-request.outputs.url }}. >> $GITHUB_STEP_SUMMARY
           el
-            echo Branch created at [bump-${{ steps.bump-version.outputs.version }}](https://github.com/${{ github.repository }}/compare/main...bump-${{ steps.bump-version.outputs.version }}) >> $GITHUB_STEP_SUMMARY
+            echo "Branch created at [bump-${{ steps.bump-version.outputs.version }}](https://github.com/${{ github.repository }}/compare/main...bump-${{ steps.bump-version.outputs.version }})" >> $GITHUB_STEP_SUMMARY
           fi
