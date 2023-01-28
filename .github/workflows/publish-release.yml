@@ -6,8 +6,6 @@ on:
 
 jobs:
   build:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,14 +32,27 @@ jobs:
         with:
           name: tarball
           path: packages/use-read-alert/*.tgz
+
+  draft-release:
+    needs:
+      - build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download tarball artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: tarball
       - name: Draft a new release
-        run: gh release create ${{ github.ref_name }} ./packages/use-read-alert/*.tgz --draft --notes-file ./CHANGELOG.md
+        run: gh release create ${{ github.ref_name }} ./*.tgz --draft --notes-file ./CHANGELOG.md --repo ${{ github.repository }}
         env:
           GH_TOKEN: ${{ github.token }}
 
   publish-package:
     environment: production
-    needs: build
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
@@ -70,7 +81,7 @@ jobs:
 
   publish-release:
     needs:
-      - build
+      - draft-release
       - publish-package
     permissions:
       contents: write
