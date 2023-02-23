@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Bump dependencies, by [@compulim], in PR [#4](https://github.com/compulim/use-read-alert/pull/4)
+- Bump dependencies, by [@compulim](https://github.com/compulim), in PR [#4](https://github.com/compulim/use-read-alert/pull/4)
    - Production dependencies
       - [`@babel/runtime-corejs3@7.21.0`](https://npmjs.com/package/@babel/runtime-corejs3)
    - Development dependencies
