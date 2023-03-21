@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixes [#5](https://github.com/compulim/use-read-alert/issues/5), exports typings through conditional exports, by [@compulim](https://github.com/compulim), in PR [#6](https://github.com/compulim/use-read-alert/pull/6)
+
 ### Changed
 
 - Bump dependencies, by [@compulim](https://github.com/compulim), in PR [#4](https://github.com/compulim/use-read-alert/pull/4)
