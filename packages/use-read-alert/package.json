@@ -27,8 +27,8 @@
   "scripts": {
     "build": "npm run build:babel && npm run build:typescript",
     "build:babel": "npm run build:babel:commonjs && npm run build:babel:esmodules",
-    "build:babel:commonjs": "babel src --config-file ./babel.commonjs.config.json --extensions .ts,.tsx --ignore ./src/**/*.spec.js,./src/**/*.spec.jsx,./src/**/*.spec.ts,./src/**/*.spec.tsx,./src/**/*.test.js,./src/**/*.test.jsx,./src/**/*.test.ts,./src/**/*.test.tsx --out-dir ./lib/commonjs/",
-    "build:babel:esmodules": "babel src --config-file ./babel.esmodules.config.json --extensions .ts,.tsx --ignore ./src/**/*.spec.js,./src/**/*.spec.jsx,./src/**/*.spec.ts,./src/**/*.spec.tsx,./src/**/*.test.js,./src/**/*.test.jsx,./src/**/*.test.ts,./src/**/*.test.tsx --out-dir ./lib/esmodules/",
+    "build:babel:commonjs": "babel src --config-file ./babel.commonjs.config.json --extensions .ts,.tsx --out-dir ./lib/commonjs/",
+    "build:babel:esmodules": "babel src --config-file ./babel.esmodules.config.json --extensions .ts,.tsx --out-dir ./lib/esmodules/",
     "build:typescript": "tsc --project ./src/tsconfig.declaration.json",
     "bump": "npm run bump:prod && npm run bump:dev && npm run bump:auditfix && npm run bump:babel",
     "bump:auditfix": "npm audit fix || exit 0",

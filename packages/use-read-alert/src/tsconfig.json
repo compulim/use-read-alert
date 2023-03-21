@@ -4,10 +4,5 @@
     "jsx": "react",
     "strict": true
   },
-  "exclude": [
-    "./**/*.spec.ts",
-    "./**/*.spec.tsx",
-    "./**/*.test.ts",
-    "./**/*.test.tsx"
-  ]
+  "exclude": ["**/*.spec.*", "**/*.test.*"]
 }

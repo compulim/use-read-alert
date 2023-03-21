@@ -4,8 +4,11 @@ import React from 'react';
 
 import App from './App';
 
-createRoot(document.getElementById('root')).render(
-  <UseReadAlertProvider>
-    <App />
-  </UseReadAlertProvider>
-);
+const rootElement = document.getElementById('root');
+
+rootElement &&
+  createRoot(rootElement).render(
+    <UseReadAlertProvider>
+      <App />
+    </UseReadAlertProvider>
+  );
