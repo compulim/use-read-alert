@@ -3,6 +3,9 @@ name: Continuous deployment
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '.devcontainer/**'
+      - '.github/**'
 
 jobs:
   build:
@@ -11,6 +14,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
+        package-name: [use-read-alert]
 
     steps:
       - uses: actions/checkout@v3
@@ -26,31 +30,28 @@ jobs:
           echo version=`cat package.json | jq -r '.version'` >> $GITHUB_OUTPUT
       - name: Propagate versions
         run: |
-          cd packages/use-read-alert
+          cd packages/${{ matrix.package-name }}
           npm version --no-git-tag-version ${{ steps.set-version.outputs.version }}
       - run: npm clean-install
       - run: npm run build --if-present
       - name: Run npm pack
         run: |
-          cd packages/use-read-alert
+          cd packages/${{ matrix.package-name }}
           npm pack
       - name: Upload tarball artifact
         uses: actions/upload-artifact@v3.1.1
         with:
           name: tarball
-          path: packages/use-read-alert/*.tgz
-      - name: Build Pages
+          path: packages/${{ matrix.package-name }}/*.tgz
+      - name: Build pages
         run: |
-          cd packages/use-read-alert
-          mv *.tgz use-read-alert-0.0.0-0.tgz
-          cd ../pages
-          npm install
+          cd packages/pages
+          npm install ../${{ matrix.package-name }}/*.tgz
           npm run build
-      - name: Upload Pages artifact
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
-        if: ${{ matrix.node-version == '16.x' }}
         with:
-          path: 'packages/pages/public/'
+          path: packages/pages/public
 
   publish-package:
     needs: build
@@ -82,20 +83,17 @@ jobs:
       - name: Summarize job
         run: echo NPM package published to https://npmjs.com/package/${{ steps.read-package-json.outputs.package-name }}/v/${{ steps.read-package-json.outputs.version }}. >> $GITHUB_STEP_SUMMARY
 
-  deploy-pages:
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
+  publish-pages:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - id: deployment
+        name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
