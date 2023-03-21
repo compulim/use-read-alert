@@ -8,15 +8,18 @@
   "exports": {
     ".": {
       "import": "./lib/esmodules/index.js",
-      "require": "./lib/commonjs/index.js"
+      "require": "./lib/commonjs/index.js",
+      "types": "./lib/types/index.d.ts"
     },
     "./UseReadAlertProvider": {
       "import": "./lib/esmodules/UseReadAlertProvider.js",
-      "require": "./lib/commonjs/UseReadAlertProvider.js"
+      "require": "./lib/commonjs/UseReadAlertProvider.js",
+      "types": "./lib/types/UseReadAlertProvider.d.ts"
     },
     "./useReadAlert": {
       "import": "./lib/esmodules/useReadAlert.js",
-      "require": "./lib/commonjs/useReadAlert.js"
+      "require": "./lib/commonjs/useReadAlert.js",
+      "types": "./lib/types/useReadAlert.d.ts"
     }
   },
   "main": "./lib/commonjs/index.js",
