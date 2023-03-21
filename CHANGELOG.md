@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 2023-03-21
+
 ### Fixed
 
 - Fixes [#5](https://github.com/compulim/use-read-alert/issues/5), exports typings through conditional exports, by [@compulim](https://github.com/compulim), in PR [#6](https://github.com/compulim/use-read-alert/pull/6)
