@@ -6,6 +6,6 @@ on:
 
 jobs:
   call-workflow:
-    uses: compulim/workflows/react/publish-release.yml@main
+    uses: compulim/workflows/.github/workflows/publish-release.yml@main
     with:
       package-name: use-read-alert
