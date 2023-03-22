@@ -7,6 +7,6 @@ on:
 
 jobs:
   call-workflow:
-    uses: compulim/workflows/.github/workflows/react/pull-request-validation.yml@main
+    uses: compulim/workflows/.github/workflows/pull-request-validation.yml@main
     with:
       package-name: use-read-alert
