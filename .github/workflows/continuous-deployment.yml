@@ -6,9 +6,11 @@ on:
     paths-ignore:
       - '.devcontainer/**'
       - '.github/**'
+  workflow_dispatch: {}
 
 jobs:
   call-workflow:
     uses: compulim/workflows/.github/workflows/continuous-deployment.yml@main
     with:
+      dry-run: ${{ github.event_name == 'workflow_dispatch' }}
       package-name: use-read-alert

@@ -3,9 +3,11 @@ name: Publish release on push tag
 on:
   push:
     tags: 'v*'
+  workflow_dispatch: {}
 
 jobs:
   call-workflow:
     uses: compulim/workflows/.github/workflows/publish-release.yml@main
     with:
+      dry-run: ${{ github.event_name == 'workflow_dispatch' }}
       package-name: use-read-alert
