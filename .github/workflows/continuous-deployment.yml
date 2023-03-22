@@ -10,6 +10,9 @@ on:
 
 jobs:
   call-workflow:
+    permissions:
+      pages: write
+      id-token: write
     uses: compulim/workflows/.github/workflows/continuous-deployment.yml@main
     with:
       dry-run: ${{ github.event_name == 'workflow_dispatch' }}
